@@ -10,4 +10,6 @@ function getComputerChoice() {
     } else if (choice == 3) {
         computerChoice = 'Scissors'
     }
+
+    return computerChoice
 }
