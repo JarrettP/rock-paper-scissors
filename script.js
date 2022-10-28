@@ -1,15 +1,25 @@
-let computerChoice = ''
+function numberToString(play) {
+    switch (true) {
+        case play == 1:
+            return 'Rock'
+        case play == 2:
+            return 'Paper'
+        case play == 3:
+            return 'Scissors'
+    }
+}
+
+function getPlayerChoice() {
+    
+}
 
 function getComputerChoice() {
-    choice = Math.floor(Math.random() * 3) + 1
-
-    if (choice == 1) {
-        computerChoice = 'Rock'
-    } else if (choice == 2) {
-        computerChoice = 'Paper'
-    } else if (choice == 3) {
-        computerChoice = 'Scissors'
-    }
-
-    return computerChoice
+    return Math.floor(Math.random() * 3) + 1
 }
+
+function rockPaperScissors(playerSelection, computerSelection) {
+    playerSelection
+}
+
+const playerSelection = 'rock'
+const computerSelection = getComputerChoice()
