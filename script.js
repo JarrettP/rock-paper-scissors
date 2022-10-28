@@ -1,12 +1,5 @@
-function numberToString(play) {
-    switch (true) {
-        case play == 0x01:
-            return 'Rock'
-        case play == 0x02:
-            return 'Paper'
-        case play == 0x03:
-            return 'Scissors'
-    }
+function getComputerChoice() {
+    return Math.floor(Math.random() * 3).toString(16)
 }
 
 function getPlayerChoice(choice) {
@@ -22,12 +15,41 @@ function getPlayerChoice(choice) {
     }
 }
 
-function getComputerChoice() {
-    return Math.floor(Math.random() * 3).toString(16)
+function numberToString(choice) {
+    switch (true) {
+        case choice == 0x01:
+        case choice == 0x10:
+            return 'Rock'
+        case choice == 0x02:
+        case choice == 0x20:
+            return 'Paper'
+        case choice == 0x03:
+        case choice == 0x30:
+            return 'Scissors'
+    }
 }
 
-function rockPaperScissors(playerSelection, computerSelection) {
-    playerSelection
+function playRound(playerSelection, computerSelection) {
+    round = playerSelection | computerSelection
+    console.log(round)
+    
+    switch (true) {
+        //DRAW
+        case round == 0x11:
+        case round == 0x22:
+        case round == 0x33:
+            return `Both chose ${numberToString(playerSelection)}! It's a draw!`
+        //COMPUTER WINS
+        case round == 0x12:
+        case round == 0x23:
+        case round == 0x31:
+            return `${numberToString(computerSelection)} beats ${numberToString(playerSelection)}! You lose!`
+        //PLAYER WINS
+        case round == 0x13:
+        case round == 0x21:
+        case round == 0x32:
+            return `${numberToString(playerSelection)} beats ${numberToString(computerSelection)}! You win!`
+    }
 }
 
 let getPlayerSelection = prompt("Rock, paper, or scissors?")
