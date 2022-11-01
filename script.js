@@ -1,5 +1,5 @@
 function getComputerChoice() {
-    computerChoice = Math.floor(Math.random() * 3).toString(16)
+    computerChoice = Math.floor((Math.random() * 3) + 1).toString(16)
 }
 
 function getPlayerChoice() {
@@ -38,7 +38,7 @@ function playRound() {
     getComputerChoice()
 
     round = playerChoice | computerChoice
-    console.log(round)
+    console.log(round, computerChoice)
     
     switch (true) {
         //DRAW
