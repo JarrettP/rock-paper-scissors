@@ -38,7 +38,6 @@ function playRound() {
     getComputerChoice()
 
     round = playerChoice | computerChoice
-    console.log(round, computerChoice)
     
     switch (true) {
         //DRAW
@@ -52,23 +51,42 @@ function playRound() {
         case round == 0x23:
         case round == 0x31:
             console.log('computer')
+            wins--
             return `${numberToString(computerChoice)} beats ${numberToString(playerChoice)}! You lose!`
         //PLAYER WINS
         case round == 0x13:
         case round == 0x21:
         case round == 0x32:
             console.log('player')
+            wins++
             return `${numberToString(playerChoice)} beats ${numberToString(computerChoice)}! You win!`
     }
 }
 
-function game(playerChoice, computerChoice) {   
+function game() {   
 
 
     for (let i = 0; i < 5; i++) {
-        
+        playRound()
+     }
+
+     winner = wins
+     wins = 0
+     console.log(winner)
+
+     switch (true) {
+        //DRAW
+        case winner == 0:
+            return "It's a draw!"
+        //COMPUTER WINS
+        case winner < 0:
+            return "Sorry! You lose!"
+        //PLAYER WINS
+        case winner > 0:
+            return "Congratulations! You win!"
      }
 }
 
+let wins = 0
 let playerChoice = 0x00
 let computerChoice = 0x00
