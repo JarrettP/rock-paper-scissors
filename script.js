@@ -1,10 +1,9 @@
 function getComputerChoice() {
-    return Math.floor(Math.random() * 3).toString(16)
+    computerChoice = Math.floor(Math.random() * 3).toString(16)
 }
 
 function getPlayerChoice() {
     choice = prompt("Rock, paper, or scissors?")
-    //choice => choice.toLowerCase()
 
     switch(true) {
         case choice.toLowerCase() == 'rock':
@@ -16,7 +15,6 @@ function getPlayerChoice() {
         case choice.toLowerCase() == 'scissors':
             playerChoice = 0x30
             break
-        
     }
 }
 
@@ -34,7 +32,11 @@ function numberToString(choice) {
     }
 }
 
-function playRound(playerChoice, computerChoice) {
+function playRound() {
+    
+    getPlayerChoice()
+    getComputerChoice()
+
     round = playerChoice | computerChoice
     console.log(round)
     
@@ -43,16 +45,19 @@ function playRound(playerChoice, computerChoice) {
         case round == 0x11:
         case round == 0x22:
         case round == 0x33:
+            console.log('draw')
             return `Both chose ${numberToString(playerChoice)}! It's a draw!`
         //COMPUTER WINS
         case round == 0x12:
         case round == 0x23:
         case round == 0x31:
+            console.log('computer')
             return `${numberToString(computerChoice)} beats ${numberToString(playerChoice)}! You lose!`
         //PLAYER WINS
         case round == 0x13:
         case round == 0x21:
         case round == 0x32:
+            console.log('player')
             return `${numberToString(playerChoice)} beats ${numberToString(computerChoice)}! You win!`
     }
 }
