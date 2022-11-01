@@ -3,7 +3,7 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice(choice) {
-    choice = choice.toLowerCase()
+    choice => choice.toLowerCase()
 
     switch(true) {
         case choice == 'rock':
@@ -52,13 +52,18 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    for (let i = 0; i < 5; i++){
-        playRound(playerSelection, computerSelection)
-    }
+function game(playerSelection, computerSelection) {   
+
+
+    for (let i = 0; i < 5; i++) {
+        
+     }
 }
 
-let getPlayerSelection = prompt("Rock, paper, or scissors?")
+function getPlayerSelection() {
+    playerSelection = prompt("Rock, paper, or scissors?")
+}
 
-const playerSelection = getPlayerChoice(getPlayerSelection)
-const computerSelection = getComputerChoice()
+//const playerSelection = getPlayerChoice(getPlayerSelection)
+let playerSelection = 'rock'
+let computerSelection = getComputerChoice()
