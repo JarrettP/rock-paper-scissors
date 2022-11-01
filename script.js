@@ -2,16 +2,21 @@ function getComputerChoice() {
     return Math.floor(Math.random() * 3).toString(16)
 }
 
-function getPlayerChoice(choice) {
-    choice => choice.toLowerCase()
+function getPlayerChoice() {
+    choice = prompt("Rock, paper, or scissors?")
+    //choice => choice.toLowerCase()
 
     switch(true) {
-        case choice == 'rock':
-            return 0x10
-        case choice == 'paper':
-            return 0x20
-        case choice == 'scissors':
-            return 0x30
+        case choice.toLowerCase() == 'rock':
+            playerChoice = 0x10
+            break
+        case choice.toLowerCase() == 'paper':
+            playerChoice = 0x20
+            break
+        case choice.toLowerCase() == 'scissors':
+            playerChoice = 0x30
+            break
+        
     }
 }
 
@@ -29,8 +34,8 @@ function numberToString(choice) {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
-    round = playerSelection | computerSelection
+function playRound(playerChoice, computerChoice) {
+    round = playerChoice | computerChoice
     console.log(round)
     
     switch (true) {
@@ -38,21 +43,21 @@ function playRound(playerSelection, computerSelection) {
         case round == 0x11:
         case round == 0x22:
         case round == 0x33:
-            return `Both chose ${numberToString(playerSelection)}! It's a draw!`
+            return `Both chose ${numberToString(playerChoice)}! It's a draw!`
         //COMPUTER WINS
         case round == 0x12:
         case round == 0x23:
         case round == 0x31:
-            return `${numberToString(computerSelection)} beats ${numberToString(playerSelection)}! You lose!`
+            return `${numberToString(computerChoice)} beats ${numberToString(playerChoice)}! You lose!`
         //PLAYER WINS
         case round == 0x13:
         case round == 0x21:
         case round == 0x32:
-            return `${numberToString(playerSelection)} beats ${numberToString(computerSelection)}! You win!`
+            return `${numberToString(playerChoice)} beats ${numberToString(computerChoice)}! You win!`
     }
 }
 
-function game(playerSelection, computerSelection) {   
+function game(playerChoice, computerChoice) {   
 
 
     for (let i = 0; i < 5; i++) {
@@ -60,10 +65,5 @@ function game(playerSelection, computerSelection) {
      }
 }
 
-function getPlayerSelection() {
-    playerSelection = prompt("Rock, paper, or scissors?")
-}
-
-//const playerSelection = getPlayerChoice(getPlayerSelection)
-let playerSelection = 0x00
-let computerSelection = 0x00
+let playerChoice = 0x00
+let computerChoice = 0x00
