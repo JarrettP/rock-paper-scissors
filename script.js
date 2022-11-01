@@ -65,5 +65,5 @@ function getPlayerSelection() {
 }
 
 //const playerSelection = getPlayerChoice(getPlayerSelection)
-let playerSelection = 'rock'
-let computerSelection = getComputerChoice()
+let playerSelection = 0x00
+let computerSelection = 0x00
