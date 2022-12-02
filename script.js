@@ -52,21 +52,38 @@ function playRound() {
         case round == 0x22:
         case round == 0x33:
             console.log('draw');
-            return `Both chose ${numberToString(playerChoice)}! It's a draw!`;
+            // return `Both chose ${numberToString(playerChoice)}! It's a draw!`;
+            break;
         //COMPUTER WINS
         case round == 0x12:
         case round == 0x23:
         case round == 0x31:
             console.log('computer');
-            wins--;
-            return `${numberToString(computerChoice)} beats ${numberToString(playerChoice)}! You lose!`;
+            computerWins++;
+
+            if (computerWins > 4) {
+                results.textContent = 'Computer wins!';
+                break;
+            };
+
+            results.textContent = `Computer: ${computerWins} Player: ${playerWins}`;
+            // return `${numberToString(computerChoice)} beats ${numberToString(playerChoice)}! You lose!`;
+            break;
         //PLAYER WINS
         case round == 0x13:
         case round == 0x21:
         case round == 0x32:
             console.log('player');
-            wins++;
-            return `${numberToString(playerChoice)} beats ${numberToString(computerChoice)}! You win!`;
+            playerWins++;
+
+            if (playerWins > 4) {
+                results.textContent = 'You win!';
+                break;
+            };
+
+            results.textContent = `Computer: ${computerWins} Player: ${playerWins}`;
+            // return `${numberToString(playerChoice)} beats ${numberToString(computerChoice)}! You win!`;
+            break;
     };
 };
 
@@ -93,9 +110,13 @@ function playRound() {
 //      };
 // };
 
-let wins = 0;
+let computerWins = 0;
+let playerWins = 0
 let playerChoice = 0x00;
 let computerChoice = 0x00;
 
 const plays = document.querySelectorAll('.play');
 plays.forEach(play => play.addEventListener('click', playRound));
+
+const results = document.querySelector('#results');
+results.textContent = `Computer: ${computerWins} Player: ${playerWins}`;
